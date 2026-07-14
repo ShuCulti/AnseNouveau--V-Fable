@@ -1,0 +1,626 @@
+/* Anse Nouveau POS — plain CSS, big touch targets, minimal text. */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: #f2f4f7;
+  color: #1a1a2e;
+  font-size: 20px;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+}
+
+/* Layout */
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.topnav {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: #1a1a2e;
+}
+
+.topnav a {
+  flex: 1;
+  text-align: center;
+  padding: 18px 8px;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 700;
+  background: #2e2e4e;
+}
+
+.topnav a.active {
+  background: #e94560;
+}
+
+.nav-logout {
+  padding: 18px 20px;
+  background: #444;
+  color: #fff;
+  font-weight: 700;
+}
+
+.page {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+/* Login */
+
+.login-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.login-title {
+  font-size: 48px;
+  color: #1a1a2e;
+}
+
+.login-hint {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.login-users {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: min(420px, 90vw);
+}
+
+.login-user-btn {
+  padding: 28px;
+  font-size: 30px;
+  font-weight: 700;
+  background: #fff;
+  border: 3px solid #1a1a2e;
+}
+
+.login-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.login-back {
+  align-self: flex-start;
+  background: none;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.pin-dots {
+  display: flex;
+  gap: 16px;
+}
+
+.pin-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 3px solid #1a1a2e;
+}
+
+.pin-dot.filled {
+  background: #1a1a2e;
+}
+
+/* NumPad */
+
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: min(360px, 90vw);
+}
+
+.numpad-key {
+  padding: 22px 0;
+  font-size: 30px;
+  font-weight: 700;
+  background: #fff;
+  border: 2px solid #ccd;
+}
+
+.numpad-key:active {
+  background: #dde;
+}
+
+.numpad-clear {
+  grid-column: span 3;
+  background: #ffe3e3;
+}
+
+/* POS */
+
+.pos {
+  display: flex;
+  gap: 12px;
+  height: 100%;
+}
+
+.scan-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.pos-left {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pos-right {
+  flex: 2;
+  overflow-y: auto;
+}
+
+.cart {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+.cart-empty {
+  color: #888;
+  font-size: 26px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cart-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 8px;
+  border-bottom: 2px solid #eee;
+  font-size: 24px;
+}
+
+.cart-name {
+  flex: 1;
+}
+
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-qty button {
+  width: 54px;
+  height: 54px;
+  font-size: 30px;
+  font-weight: 700;
+  background: #eef;
+}
+
+.cart-price {
+  width: 110px;
+  text-align: right;
+  font-weight: 700;
+}
+
+.pos-footer {
+  padding: 12px;
+  border-top: 3px solid #1a1a2e;
+}
+
+.pos-total {
+  font-size: 72px;
+  font-weight: 800;
+  text-align: right;
+  padding: 4px 8px;
+}
+
+.pos-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-danger {
+  flex: 1;
+  padding: 22px;
+  font-size: 26px;
+  font-weight: 700;
+  background: #ffe3e3;
+  color: #b00020;
+}
+
+.btn-pay {
+  flex: 3;
+  padding: 22px;
+  font-size: 30px;
+  font-weight: 800;
+  background: #0a7d32;
+  color: #fff;
+  width: 100%;
+}
+
+.btn-pay:disabled, .btn-danger:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.quick-btn {
+  padding: 26px 10px;
+  font-size: 24px;
+  font-weight: 700;
+  background: #fff;
+  border: 3px solid #1a1a2e;
+  min-height: 100px;
+}
+
+/* Modal */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  width: min(560px, 94vw);
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h2 {
+  font-size: 30px;
+}
+
+.modal-close {
+  width: 56px;
+  height: 56px;
+  font-size: 26px;
+  background: #eee;
+}
+
+/* Unit picker */
+
+.unit-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.unit-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 20px;
+  font-size: 28px;
+  background: #fff;
+  border: 3px solid #1a1a2e;
+}
+
+.unit-btn.cold {
+  border-color: #1565c0;
+  background: #e8f2ff;
+}
+
+/* Payment / entries */
+
+.payment, .unknown-item, .price-edit, .stock-entry, .count-entry, .change-screen, .cash-count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.pay-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 18px 10px;
+  font-size: 22px;
+  font-weight: 700;
+  background: #eee;
+}
+
+.toggle-btn.active {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.pay-total {
+  font-size: 56px;
+  font-weight: 800;
+}
+
+.pay-change {
+  font-size: 32px;
+  font-weight: 800;
+  color: #b00020;
+}
+
+.pay-change.ok {
+  color: #0a7d32;
+}
+
+.change-screen p {
+  font-size: 28px;
+}
+
+.change-amount {
+  font-size: 88px;
+  font-weight: 800;
+  color: #0a7d32;
+}
+
+.big-input {
+  width: 100%;
+  padding: 18px;
+  font-size: 28px;
+  border: 3px solid #1a1a2e;
+  border-radius: 12px;
+}
+
+.unknown-barcode {
+  color: #666;
+}
+
+.error-text {
+  color: #b00020;
+  font-weight: 700;
+}
+
+.ok-text {
+  color: #0a7d32;
+  font-weight: 700;
+  padding: 8px 0;
+}
+
+/* Prices */
+
+.prices {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.price-product h2 {
+  font-size: 30px;
+  margin: 12px 0 8px;
+}
+
+.price-units {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.price-btn {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 18px;
+  font-size: 26px;
+  background: #fff;
+  border: 3px solid #1a1a2e;
+}
+
+.price-old {
+  font-size: 26px;
+  color: #666;
+}
+
+.price-new {
+  font-size: 60px;
+  font-weight: 800;
+  min-height: 72px;
+}
+
+/* Inventory */
+
+.inventory {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inv-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.inv-row.low {
+  background: #fff2e3;
+  border: 2px solid #e07b00;
+}
+
+.inv-name {
+  flex: 1;
+  font-size: 24px;
+}
+
+.inv-qty {
+  width: 80px;
+  text-align: right;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.inv-row button {
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  background: #eef;
+}
+
+.reasons {
+  flex-wrap: wrap;
+}
+
+/* Reports */
+
+.reports {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tabs {
+  flex-wrap: wrap;
+}
+
+.report-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.report-controls input {
+  padding: 14px;
+  font-size: 22px;
+  border: 2px solid #1a1a2e;
+  border-radius: 10px;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.report-table th, .report-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 20px;
+}
+
+.report-table tr.bad td {
+  background: #ffe3e3;
+}
+
+.report-table tfoot td {
+  font-weight: 800;
+}
+
+.zreport, .cash-result {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 560px;
+}
+
+.zreport h3 {
+  margin: 14px 0 6px;
+}
+
+.z-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 22px;
+}
+
+.z-line.big {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.z-line.ok span:last-child {
+  color: #0a7d32;
+}
+
+.z-line.bad span:last-child {
+  color: #b00020;
+}
+
+.cash-label {
+  font-size: 22px;
+  font-weight: 700;
+  align-self: flex-start;
+}
+
+/* Stock count */
+
+.stockcount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.count-entry h2 {
+  font-size: 32px;
+}
+
+.close-count {
+  margin-top: 24px;
+  padding: 18px 40px;
+}
