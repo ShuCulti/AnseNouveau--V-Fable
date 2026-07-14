@@ -21,7 +21,13 @@ export default function LoginPage() {
   useEffect(() => {
     api.get('/auth/users')
       .then((res) => setUsers(res.data))
-      .catch(() => setError('Cannot reach the server'))
+      .catch((err) => {
+        if (err.response) {
+          setError('API error — is the database up and the connection string set?')
+        } else {
+          setError('Cannot reach the API — is it running on port 5000?')
+        }
+      })
   }, [])
 
   useEffect(() => {
