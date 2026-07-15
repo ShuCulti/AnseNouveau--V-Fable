@@ -1,0 +1,365 @@
+/* Anse Nouveau back office — desktop layout, denser than the register UI. */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: #f2f4f7;
+  color: #1a1a2e;
+  font-size: 15px;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Layout */
+
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.brand {
+  font-weight: 700;
+  margin-right: 12px;
+}
+
+.topnav a {
+  color: #ccd;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.topnav a.active {
+  background: #e94560;
+  color: #fff;
+}
+
+.nav-logout {
+  margin-left: auto;
+  background: #2e2e4e;
+  color: #fff;
+  padding: 8px 14px;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Login */
+
+.login-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.login-card h1 {
+  font-size: 24px;
+}
+
+/* Forms */
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+}
+
+label.inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+label.check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+input, select {
+  padding: 9px 10px;
+  font-size: 15px;
+  border: 1.5px solid #bbc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+input:focus, select:focus {
+  outline: 2px solid #1a1a2e;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+/* Buttons */
+
+.btn-primary {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 10px 18px;
+  font-weight: 700;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn-plain {
+  background: #eee;
+  padding: 10px 18px;
+}
+
+.btn-small {
+  background: #eef;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Toolbar */
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.search {
+  flex: 1;
+  max-width: 380px;
+}
+
+/* Tables */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.data-table th, .data-table td {
+  padding: 9px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.data-table th {
+  background: #f7f8fa;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #556;
+}
+
+.data-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table .low {
+  color: #b00020;
+  font-weight: 700;
+}
+
+.data-table tfoot td {
+  font-weight: 800;
+  background: #f7f8fa;
+}
+
+.muted {
+  color: #999;
+  font-style: italic;
+}
+
+/* Sell unit chips */
+
+.unit-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  background: #eef;
+  border: 1px solid #ccd;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.chip.add {
+  background: #fff;
+  border-style: dashed;
+  color: #556;
+}
+
+/* Modal */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: min(720px, 94vw);
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+}
+
+.modal-close {
+  width: 36px;
+  height: 36px;
+  background: #eee;
+}
+
+.modal h3 {
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.unit-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.unit-table th, .unit-table td {
+  padding: 4px 6px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.unit-table input[type='text'], .unit-table input[type='number'] {
+  width: 100%;
+}
+
+.unit-table .center {
+  text-align: center;
+}
+
+/* Month end */
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tile {
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tile span {
+  font-size: 13px;
+  color: #556;
+}
+
+.tile strong {
+  font-size: 22px;
+}
+
+.tile.highlight {
+  background: #1a1a2e;
+}
+
+.tile.highlight span, .tile.highlight strong {
+  color: #fff;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.section-head h2 {
+  font-size: 18px;
+}
+
+/* Messages */
+
+.error-text {
+  color: #b00020;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.ok-text {
+  color: #0a7d32;
+  font-weight: 700;
+  margin: 8px 0;
+}
