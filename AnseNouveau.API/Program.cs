@@ -94,6 +94,6 @@ app.MapControllers();
 
 // Back-office SPA lives under wwwroot/admin; the register SPA owns the root.
 app.MapFallbackToFile("/admin/{*path}", "admin/index.html");
-
+app.MapFallbackToFile("index.html");
 
 app.Run();

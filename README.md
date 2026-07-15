@@ -11,12 +11,8 @@ AnseNouveau.sln
 ├── AnseNouveau.Business     services + IService interfaces
 ├── AnseNouveau.DataAccess   ADO.NET repository implementations
 ├── AnseNouveau.Domain       models + IRepository interfaces (zero dependencies)
-<<<<<<< HEAD
 ├── client/                  register UI — React frontend (Vite, port 5173)
 ├── admin/                   back-office UI for the laptop (Vite, port 5174)
-=======
-├── client/                  React frontend (Vite, port 5173)
->>>>>>> 78e3e5e (Merge Request)
 └── database/                AnseNouveau_Dev.sql (schema + seed)
 ```
 
@@ -50,7 +46,6 @@ AnseNouveau.sln
    Runs on http://localhost:5173. The API base URL defaults to
    `http://localhost:5000/api`; override with `VITE_API_URL` if needed.
 
-<<<<<<< HEAD
 4. **Back office** (product management + month-end reports, Admin login only):
 
    ```
@@ -65,8 +60,6 @@ AnseNouveau.sln
    of sell units. Month End gives sales/profit/stock tables with CSV export
    and current stock valuation at cost.
 
-=======
->>>>>>> 78e3e5e (Merge Request)
 ## Auth
 
 PIN login (BCrypt-hashed) → JWT bearer token; an Axios request interceptor adds
@@ -92,7 +85,6 @@ Admin role.
 
 ## Deployment (counter PC, Windows)
 
-<<<<<<< HEAD
 1. Build both frontends into the API's wwwroot:
 
    ```
@@ -108,17 +100,6 @@ Admin role.
    appsettings.json), so the back office is reachable from a laptop on the
    shop network at `http://<counter-pc-ip>:5000/admin` — allow port 5000
    through Windows Firewall on the counter PC.
-=======
-1. Build the frontend into the API's wwwroot:
-
-   ```
-   cd client
-   npm run build
-   ```
-
-   Copy `client/dist/*` into `AnseNouveau.API/wwwroot/` (Program.cs already
-   has `UseStaticFiles` + `MapFallbackToFile("index.html")`).
->>>>>>> 78e3e5e (Merge Request)
 
 2. Publish self-contained:
 
