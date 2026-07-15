@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, NavLink, Navigate } from 'react-router-do
 import { AuthProvider, useAuth } from './AuthContext'
 import LoginPage from './pages/LoginPage'
 import ProductsPage from './pages/ProductsPage'
+import GridPage from './pages/GridPage'
 import MonthEndPage from './pages/MonthEndPage'
 
 function Layout({ children }) {
@@ -14,6 +15,7 @@ function Layout({ children }) {
       <nav className="topnav">
         <span className="brand">Anse Nouveau — Back Office</span>
         <NavLink to="/">Products</NavLink>
+        <NavLink to="/grid">Price Grid</NavLink>
         <NavLink to="/month-end">Month End</NavLink>
         <button className="nav-logout" onClick={logout}>
           {user.displayName} — log out
@@ -31,6 +33,7 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<Layout><ProductsPage /></Layout>} />
+          <Route path="/grid" element={<Layout><GridPage /></Layout>} />
           <Route path="/month-end" element={<Layout><MonthEndPage /></Layout>} />
         </Routes>
       </BrowserRouter>

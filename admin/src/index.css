@@ -363,3 +363,54 @@ input:focus, select:focus {
   font-weight: 700;
   margin: 8px 0;
 }
+
+/* Price grid */
+
+.grid-scroll {
+  overflow-x: auto;
+}
+
+.grid-table th, .grid-table td {
+  border-right: 1px solid #eee;
+  white-space: nowrap;
+}
+
+.cell-editable {
+  cursor: pointer;
+}
+
+.cell-editable:hover {
+  background: #eef2ff;
+  outline: 1.5px solid #1a1a2e;
+}
+
+.cell-cold {
+  background: #f2f8ff;
+}
+
+.cell-empty {
+  color: #bbb;
+}
+
+.cell-editing input {
+  width: 90px;
+  padding: 4px 6px;
+  font-size: 14px;
+  text-align: right;
+}
+
+.add-column {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.add-column input {
+  width: 100px;
+}
+
+.hint {
+  color: #556;
+  font-size: 13px;
+}
