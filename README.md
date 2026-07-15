@@ -33,7 +33,7 @@ AnseNouveau.sln
    dotnet run --project AnseNouveau.API
    ```
 
-   Runs on http://localhost:5000 (Swagger at /swagger in dev).
+   Runs on http://localhost:5050 (Swagger at /swagger in dev).
 
 3. **Frontend**:
 
@@ -44,7 +44,7 @@ AnseNouveau.sln
    ```
 
    Runs on http://localhost:5173. The API base URL defaults to
-   `http://localhost:5000/api`; override with `VITE_API_URL` if needed.
+   `http://localhost:5050/api`; override with `VITE_API_URL` if needed.
 
 4. **Back office** (product management + month-end reports, Admin login only):
 
@@ -96,9 +96,9 @@ Admin role.
    into `AnseNouveau.API/wwwroot/admin/` (Program.cs serves the register at
    `/` and the back office at `/admin`).
 
-   The API binds `http://0.0.0.0:5000` in production (`Urls` in
+   The API binds `http://0.0.0.0:5050` in production (`Urls` in
    appsettings.json), so the back office is reachable from a laptop on the
-   shop network at `http://<counter-pc-ip>:5000/admin` — allow port 5000
+   shop network at `http://<counter-pc-ip>:5050/admin` — allow port 5050
    through Windows Firewall on the counter PC.
 
 2. Publish self-contained:
@@ -119,7 +119,7 @@ Admin role.
 4. Kiosk browser on the counter screen:
 
    ```
-   chrome --kiosk http://localhost:5000
+   chrome --kiosk http://localhost:5050
    ```
 
 The whole system runs on the one PC; no internet required.

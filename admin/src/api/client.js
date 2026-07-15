@@ -1,9 +1,9 @@
 import axios from 'axios'
 
 // In production the admin app is served by the API itself, so relative /api works;
-// in dev it runs on 5174 and talks to the API on 5000.
+// in dev it runs on 5174 and talks to the API on 5050.
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000/api' : '/api'),
+  baseURL: import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5050/api' : '/api'),
 })
 
 api.interceptors.request.use((config) => {
