@@ -11,12 +11,13 @@ USE AnseNouveau_Dev;
 GO
 
 -- The beer/wine fridges get their own department for the Z-report.
-INSERT INTO Departments (ShopId, Name, SortOrder) VALUES (1, 'Alcohol', 4);
+IF NOT EXISTS (SELECT 1 FROM Departments WHERE ShopId = 1 AND Name = 'Alcohol')
+    INSERT INTO Departments (ShopId, Name, SortOrder) VALUES (1, 'Alcohol', 4);
 GO
 
-DECLARE @Drinks int = (SELECT Id FROM Departments WHERE ShopId = 1 AND Name = 'Drinks');
-DECLARE @Snacks int = (SELECT Id FROM Departments WHERE ShopId = 1 AND Name = 'Snacks');
-DECLARE @Alcohol int = (SELECT Id FROM Departments WHERE ShopId = 1 AND Name = 'Alcohol');
+DECLARE @Drinks int = (SELECT MIN(Id) FROM Departments WHERE ShopId = 1 AND Name = 'Drinks');
+DECLARE @Snacks int = (SELECT MIN(Id) FROM Departments WHERE ShopId = 1 AND Name = 'Snacks');
+DECLARE @Alcohol int = (SELECT MIN(Id) FROM Departments WHERE ShopId = 1 AND Name = 'Alcohol');
 
 -- ---------------------------------------------------------------------------
 -- Fridge 1: mixed sodas / milks / juices / waters

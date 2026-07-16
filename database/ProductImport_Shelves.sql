@@ -8,14 +8,15 @@
 USE AnseNouveau_Dev;
 GO
 
-INSERT INTO Departments (ShopId, Name, SortOrder) VALUES
-(1, 'Personal Care', 5),
-(1, 'Automotive', 6);
+IF NOT EXISTS (SELECT 1 FROM Departments WHERE ShopId = 1 AND Name = 'Personal Care')
+    INSERT INTO Departments (ShopId, Name, SortOrder) VALUES (1, 'Personal Care', 5);
+IF NOT EXISTS (SELECT 1 FROM Departments WHERE ShopId = 1 AND Name = 'Automotive')
+    INSERT INTO Departments (ShopId, Name, SortOrder) VALUES (1, 'Automotive', 6);
 GO
 
-DECLARE @PersonalCare int = (SELECT Id FROM Departments WHERE ShopId = 1 AND Name = 'Personal Care');
-DECLARE @Household int = (SELECT Id FROM Departments WHERE ShopId = 1 AND Name = 'Household');
-DECLARE @Automotive int = (SELECT Id FROM Departments WHERE ShopId = 1 AND Name = 'Automotive');
+DECLARE @PersonalCare int = (SELECT MIN(Id) FROM Departments WHERE ShopId = 1 AND Name = 'Personal Care');
+DECLARE @Household int = (SELECT MIN(Id) FROM Departments WHERE ShopId = 1 AND Name = 'Household');
+DECLARE @Automotive int = (SELECT MIN(Id) FROM Departments WHERE ShopId = 1 AND Name = 'Automotive');
 
 -- ---------------------------------------------------------------------------
 -- Hair care / relaxers / colour
